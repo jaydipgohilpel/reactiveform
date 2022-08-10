@@ -54,22 +54,30 @@
             <!-- Password input -->
             <div class="form-outline ">
               <label class="form-label" for="password">Password</label>
-              <input type="password" id="password" name="password" class="form-control form-control-lg"
-                placeholder="Enter password" formControlName="password" />
+              <input type="password" id="password" name="password"   (keydown)="marktouch(password)" 
+                class="form-control form-control-lg" placeholder="Enter password" formControlName="password" />
               <span class="validator" *ngIf="password && password.invalid  && password.touched">Password is
                 Invalid</span>
-              <div class="validator" *ngIf="password && password.invalid  && password.touched && !up">min 1 Uppercase required
+              <div class="validator" *ngIf="password  && password.touched  && ucflag==false">min 1
+                Uppercase required
               </div>
-              <div class="validator" *ngIf="password && password.invalid  && password.touched">min 1 Lowercase required
+              <div class="validator" *ngIf="password  && password.touched && lcflag===false ">min 1
+                Lowercase required
               </div>
-              <div class="validator" *ngIf="password && password.invalid  && password.touched">min 1 Numbers required
+              <div class="validator" *ngIf="password  && password.touched && numflag===false ">min 1
+                Numbers required
               </div>
-              <div class="validator" *ngIf="password && password.invalid  && password.touched">min 1 special charcter required
+              <div class="validator" *ngIf="password  && password.touched && lenflag===false ">min 8
+                character required
+              </div>
+              <div class="validator" *ngIf="password  && password.touched && spflag===false ">min 1
+                special charcter
+                required
               </div>
               
+
+
               <br>
-
-
             </div>
             <div class="form-outline ">
               <label class="form-label" for="username">Username</label>
@@ -101,7 +109,7 @@
             <br>
             <div class="form-outline " style="width:49% ; display: inline-block;">
               <label class="form-label" for="mobile">Mobile No</label>
-              <input type="text" id="mobile" name="mobile" class="form-control form-control-lg"
+              <input type="number"  id="mobile" name="mobile" class="form-control form-control-lg"
                 placeholder="Enter a Mobile" formControlName="mobile" />
               <span class="validator" *ngIf="mobile && mobile.invalid && mobile.touched ">Mobile is
                 Invalid</span>
@@ -109,7 +117,7 @@
             </div>
             <div class="form-outline " style="width:48% ; display: inline-block; float:right;">
               <label class="form-label" for="age">Age</label>
-              <input type="text" id="age" name="age" class="form-control form-control-lg" placeholder="Enter Age"
+              <input type="number" id="age" name="age" class="form-control form-control-lg" placeholder="Enter Age"
                 formControlName="age" />
               <span class="validator" *ngIf="age && age.invalid  && age.touched">Age is
                 Invalid</span>
