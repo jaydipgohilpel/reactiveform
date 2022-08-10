@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- Latest compiled and minified CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+  <section class="vh-100">
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid"
+            alt="Sample image">
+        </div>
+
+
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          <form [formGroup]="registration" (ngSubmit)="register()">
+            <div class="d-flex flex-row  justify-content-center justify-content-lg-center">
+              <h3>Registration</h3>
+
+            </div>
+
+
+
+
+            <div class="form-outline ">
+              <label class="form-label" for="name">Name</label>
+              <input type="text" id="name" name="name" class="form-control form-control-lg" placeholder="Enter a Name"
+                formControlName="name" />
+              <span class="validator" *ngIf="name && name.invalid  && name.touched">Name is
+                Invalid</span>
+
+
+              <br>
+            </div>
+
+
+            <!-- Password input -->
+            <div class="form-outline ">
+              <label class="form-label" for="password">Password</label>
+              <input type="password" id="password" name="password" (keydown)="marktouch(password)"
+                class="form-control form-control-lg" placeholder="Enter password" formControlName="password" />
+              <span class="validator" *ngIf="password && password.invalid  && password.touched">Password is
+                Invalid</span>
+              <div class="validator" *ngIf="password  && password.touched  && ucflag==false">min 1
+                Uppercase required
+              </div>
+              <div class="validator" *ngIf="password  && password.touched && lcflag===false ">min 1
+                Lowercase required
+              </div>
+              <div class="validator" *ngIf="password  && password.touched && numflag===false ">min 1
+                Numbers required
+              </div>
+              <div class="validator" *ngIf="password  && password.touched && lenflag===false ">min 8
+                character required
+              </div>
+              <div class="validator" *ngIf="password  && password.touched && spflag===false ">min 1
+                special charcter
+                required
+              </div>
+
+
+
+              <br>
+            </div>
+            <div class="form-outline ">
+              <label class="form-label" for="username">Username</label>
+              <input type="text" id="username" name="username" class="form-control form-control-lg"
+                placeholder="Enter a Username" formControlName="username" />
+              <span class="validator" *ngIf="username && username.invalid && username.touched ">Username is
+                Invalid</span>
+              <br>
+            </div>
+            <div class="form-outline " style="width:49% ; display: inline-block;">
+              <label class="form-label" for="address">Address</label>
+              <textarea style="resize:none" formControlName="address" placeholder="Enter a Address"
+                class="form-control form-control-lg" cols="78" maxlength="100" rows="3"></textarea>
+              <span class="validator" *ngIf="address && address.invalid && address.touched ">Address is
+                Invalid</span>
+              <br>
+            </div>
+            <div class="form-outline " style="width:48% ; display: inline-block; float:right;">
+              <label class="form-label" for="gender">Gender</label>
+              <br>&nbsp;
+              <mat-radio-group aria-label="Select an gender" formControlName="gender">
+                <mat-radio-button value="male">Male</mat-radio-button>
+                <mat-radio-button value="female">Female</mat-radio-button>
+              </mat-radio-group>
+              <div class="validator" *ngIf="gender && gender.invalid && gender.touched ">Gender is Invalid
+              </div>
+            </div>
+
+            <br>
+            <div class="form-outline " style="width:49% ; display: inline-block;">
+              <label class="form-label" for="mobile">Mobile No</label>
+              <input type="text" (keypress)="digitonly($event)"  accept="number" id="mobile" name="mobile" class="form-control form-control-lg"
+                placeholder="Enter a Mobile" formControlName="mobile"  maxlength="10"/>
+              <span class="validator" *ngIf="mobile && mobile.invalid && mobile.touched ">Mobile is
+                Invalid</span>
+              <br>
+            </div>
+            <div class="form-outline " style="width:48% ; display: inline-block; float:right;">
+              <label class="form-label" for="age">Age</label>
+              <input type="text" (keypress)="digitonly($event)"  maxlength="3" id="age" name="age" class="form-control form-control-lg" placeholder="Enter Age"
+                formControlName="age" />
+              <span class="validator" *ngIf="age && age.invalid  && age.touched">Age is
+                Invalid</span>
+              <br>
+            </div>
+
+
+
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="submit" class="btn btn-primary btn-lg"
+                style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
+              <!-- [disabled]="!registration.valid" -->
+              <button type="reset" class="btn btn-primary btn-lg"
+                style="padding-left: 2.5rem; padding-right: 2.5rem; float: right;">Reset</button>
+
+            </div>
+
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  
+</body>
+
+</html>

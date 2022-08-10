@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import {MatRadioModule} from '@angular/material/radio';
+import { AllDataComponent } from './all-data/all-data.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 
  
 @NgModule({
   declarations: [
     AppComponent,
+    AllDataComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
