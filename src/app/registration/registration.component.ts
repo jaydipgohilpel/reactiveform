@@ -11,6 +11,10 @@ export class RegistrationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if(!localStorage.getItem("register") )
+    {
+      localStorage.setItem("register",JSON.stringify([]));
+    }
   }
   title = 'reactiveform';
   errormsg = '';
@@ -57,9 +61,10 @@ export class RegistrationComponent implements OnInit {
       user_data_arr = JSON.parse(localStorage.getItem("register") || "");
       user_data_arr.push(this.registration.value);
       localStorage.setItem("register", JSON.stringify(user_data_arr));
+      console.log(this.registration.value);
       this.registration.reset();
       alert("Registrion succsesfully")
-      window.location.reload();
+     // window.location.reload();
     }
     else {
 
